@@ -24,17 +24,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build the app (si usas build, por ejemplo en Next.js)
-        run: npm run build
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
 
-      - name: Start server
-        run: npm start &
-        env:
-          PORT: 3000
-
-      - name: Wait for server to be ready
-        run: npx wait-on http://localhost:3000
-
-      - name: Run Playwright tests
+      - name: Run tests
         run: npx playwright test
+
 
